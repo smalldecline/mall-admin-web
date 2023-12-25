@@ -269,17 +269,17 @@ export default {
       brandOptions: [],
       publishStatusOptions: [{
         value: 1,
-        label: '上架'
+        label: 'Publish'
       }, {
         value: 0,
-        label: '下架'
+        label: 'Unpublish'
       }],
       verifyStatusOptions: [{
         value: 1,
-        label: '审核通过'
+        label: 'Pass'
       }, {
         value: 0,
-        label: '未审核'
+        label: 'Not Audit'
       }]
     }
   },
@@ -301,9 +301,9 @@ export default {
   filters: {
     verifyStatusFilter(value) {
       if (value === 1) {
-        return '审核通过';
+        return 'Pass';
       } else {
-        return '未审核';
+        return 'Not Pass';
       }
     }
   },

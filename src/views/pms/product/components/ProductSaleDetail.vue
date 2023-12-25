@@ -1,99 +1,99 @@
 <template>
   <div style="margin-top: 50px">
     <el-form :model="value" ref="productSaleForm" label-width="120px" class="form-inner-container" size="small">
-      <el-form-item label="赠送积分：">
+      <el-form-item label="Gift Points:">
         <el-input v-model="value.giftPoint"></el-input>
       </el-form-item>
-      <el-form-item label="赠送成长值：">
+      <el-form-item label="Gift Growth:">
         <el-input v-model="value.giftGrowth"></el-input>
       </el-form-item>
-      <el-form-item label="积分购买限制：">
+      <el-form-item label="Point Purchase Limit:">
         <el-input v-model="value.usePointLimit"></el-input>
       </el-form-item>
-      <el-form-item label="预告商品：">
+      <el-form-item label="Pre-sale Product:">
         <el-switch
           v-model="value.previewStatus"
           :active-value="1"
           :inactive-value="0">
         </el-switch>
       </el-form-item>
-      <el-form-item label="商品上架：">
+      <el-form-item label="Product On Sale:">
         <el-switch
           v-model="value.publishStatus"
           :active-value="1"
           :inactive-value="0">
         </el-switch>
       </el-form-item>
-      <el-form-item label="商品推荐：">
-        <span style="margin-right: 10px">新品</span>
+      <el-form-item label="Product Recommendation:">
+        <span style="margin-right: 10px">New</span>
         <el-switch
           v-model="value.newStatus"
           :active-value="1"
           :inactive-value="0">
         </el-switch>
-        <span style="margin-left: 10px;margin-right: 10px">推荐</span>
+        <span style="margin-left: 10px;margin-right: 10px">Recommended</span>
         <el-switch
           v-model="value.recommandStatus"
           :active-value="1"
           :inactive-value="0">
         </el-switch>
       </el-form-item>
-      <el-form-item label="服务保证：">
+      <el-form-item label="Service Guarantee:">
         <el-checkbox-group v-model="selectServiceList">
-          <el-checkbox :label="1">无忧退货</el-checkbox>
-          <el-checkbox :label="2">快速退款</el-checkbox>
-          <el-checkbox :label="3">免费包邮</el-checkbox>
+          <el-checkbox :label="1">Hassle-free Returns</el-checkbox>
+          <el-checkbox :label="2">Quick Refunds</el-checkbox>
+          <el-checkbox :label="3">Free Shipping</el-checkbox>
         </el-checkbox-group>
       </el-form-item>
-      <el-form-item label="详细页标题：">
+      <el-form-item label="Detailed Page Title:">
         <el-input v-model="value.detailTitle"></el-input>
       </el-form-item>
-      <el-form-item label="详细页描述：">
+      <el-form-item label="Detailed Page Description:">
         <el-input v-model="value.detailDesc"></el-input>
       </el-form-item>
-      <el-form-item label="商品关键字：">
+      <el-form-item label="Product Keywords:">
         <el-input v-model="value.keywords"></el-input>
       </el-form-item>
-      <el-form-item label="商品备注：">
+      <el-form-item label="Product Notes:">
         <el-input v-model="value.note" type="textarea" :autoSize="true"></el-input>
       </el-form-item>
-      <el-form-item label="选择优惠方式：">
+      <el-form-item label="Select Promotion Type:">
         <el-radio-group v-model="value.promotionType" size="small">
-          <el-radio-button :label="0">无优惠</el-radio-button>
-          <el-radio-button :label="1">特惠促销</el-radio-button>
-          <el-radio-button :label="2">会员价格</el-radio-button>
-          <el-radio-button :label="3">阶梯价格</el-radio-button>
-          <el-radio-button :label="4">满减价格</el-radio-button>
+          <el-radio-button :label="0">No Promotion</el-radio-button>
+          <el-radio-button :label="1">Special Promotion</el-radio-button>
+          <el-radio-button :label="2">Member Price</el-radio-button>
+          <el-radio-button :label="3">Tiered Pricing</el-radio-button>
+          <el-radio-button :label="4">Discounted Pricing</el-radio-button>
         </el-radio-group>
       </el-form-item>
       <el-form-item v-show="value.promotionType===1">
         <div>
-          开始时间：
+          Start Time:
           <el-date-picker
             v-model="value.promotionStartTime"
             type="datetime"
             :picker-options="pickerOptions1"
-            placeholder="选择开始时间">
+            placeholder="Select start time">
           </el-date-picker>
         </div>
         <div class="littleMargin">
-          结束时间：
+          End Time:
           <el-date-picker
             v-model="value.promotionEndTime"
             type="datetime"
             :picker-options="pickerOptions1"
-            placeholder="选择结束时间">
+            placeholder="Select end time">
           </el-date-picker>
         </div>
         <div class="littleMargin">
-          促销价格：
-          <el-input style="width: 220px" v-model="value.promotionPrice" placeholder="输入促销价格"></el-input>
+          Promotion Price:
+          <el-input style="width: 220px" v-model="value.promotionPrice" placeholder="Enter promotion price"></el-input>
         </div>
 
       </el-form-item>
       <el-form-item v-show="value.promotionType===2">
         <div v-for="(item, index) in value.memberPriceList" :class="{littleMargin:index!==0}">
-          {{item.memberLevelName}}：
+          {{item.memberLevelName}}:
           <el-input v-model="item.memberPrice" style="width: 200px"></el-input>
         </div>
       </el-form-item>
@@ -101,7 +101,7 @@
         <el-table :data="value.productLadderList"
                   style="width: 80%" border>
           <el-table-column
-            label="数量"
+            label="Quantity"
             align="center"
             width="120">
             <template slot-scope="scope">
@@ -109,7 +109,7 @@
             </template>
           </el-table-column>
           <el-table-column
-            label="折扣"
+            label="Discount"
             align="center"
             width="120">
             <template slot-scope="scope">
@@ -118,10 +118,10 @@
           </el-table-column>
           <el-table-column
             align="center"
-            label="操作">
+            label="Action">
             <template slot-scope="scope">
-              <el-button type="text" @click="handleRemoveProductLadder(scope.$index, scope.row)">删除</el-button>
-              <el-button type="text" @click="handleAddProductLadder(scope.$index, scope.row)">添加</el-button>
+              <el-button type="text" @click="handleRemoveProductLadder(scope.$index, scope.row)">Delete</el-button>
+              <el-button type="text" @click="handleAddProductLadder(scope.$index, scope.row)">Add</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -130,7 +130,7 @@
         <el-table :data="value.productFullReductionList"
                   style="width: 80%" border>
           <el-table-column
-            label="满"
+            label="Minimum Amount"
             align="center"
             width="120">
             <template slot-scope="scope">
@@ -138,7 +138,7 @@
             </template>
           </el-table-column>
           <el-table-column
-            label="立减"
+            label="Discount Amount"
             align="center"
             width="120">
             <template slot-scope="scope">
@@ -147,17 +147,17 @@
           </el-table-column>
           <el-table-column
             align="center"
-            label="操作">
+            label="Action">
             <template slot-scope="scope">
-              <el-button type="text" @click="handleRemoveFullReduction(scope.$index, scope.row)">删除</el-button>
-              <el-button type="text" @click="handleAddFullReduction(scope.$index, scope.row)">添加</el-button>
+              <el-button type="text" @click="handleRemoveFullReduction(scope.$index, scope.row)">Delete</el-button>
+              <el-button type="text" @click="handleAddFullReduction(scope.$index, scope.row)">Add</el-button>
             </template>
           </el-table-column>
         </el-table>
       </el-form-item>
       <el-form-item style="text-align: center">
-        <el-button size="medium" @click="handlePrev">上一步，填写商品信息</el-button>
-        <el-button type="primary" size="medium" @click="handleNext">下一步，填写商品属性</el-button>
+        <el-button size="medium" @click="handlePrev">Previous: Fill in Product Information</el-button>
+        <el-button type="primary" size="medium" @click="handleNext">Next: Fill in Product Attributes</el-button>
       </el-form-item>
     </el-form>
   </div>
