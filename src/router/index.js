@@ -34,24 +34,24 @@ export const asyncRouterMap = [
     component: Layout,
     redirect: '/pms/product',
     name: 'pms',
-    meta: {title: '商品', icon: 'product'},
+    meta: {title: 'Product', icon: 'product'},
     children: [{
       path: 'product',
       name: 'product',
       component: () => import('@/views/pms/product/index'),
-      meta: {title: '商品列表', icon: 'product-list'}
+      meta: {title: 'Product List', icon: 'product-list'}
     },
       {
         path: 'addProduct',
         name: 'addProduct',
         component: () => import('@/views/pms/product/add'),
-        meta: {title: '添加商品', icon: 'product-add'}
+        meta: {title: 'Add Product', icon: 'product-add'}
       },
       {
         path: 'updateProduct',
         name: 'updateProduct',
         component: () => import('@/views/pms/product/update'),
-        meta: {title: '修改商品', icon: 'product-add'},
+        meta: {title: 'Update Product', icon: 'product-add'},
         hidden: true
       },
     ]
@@ -61,19 +61,19 @@ export const asyncRouterMap = [
     component: Layout,
     redirect: '/oms/order',
     name: 'oms',
-    meta: {title: '订单', icon: 'order'},
+    meta: {title: 'Order', icon: 'order'},
     children: [
       {
         path: 'order',
         name: 'order',
         component: () => import('@/views/oms/order/index'),
-        meta: {title: '订单列表', icon: 'product-list'}
+        meta: {title: 'Order List', icon: 'product-list'}
       },
       {
         path: 'orderDetail',
         name: 'orderDetail',
         component: () => import('@/views/oms/order/orderDetail'),
-        meta: {title: '订单详情'},
+        meta: {title: 'Order Detail'},
         hidden:true
       },
     ]
@@ -82,8 +82,7 @@ export const asyncRouterMap = [
 ]
 
 export default new Router({
-  // mode: 'history', //后端支持可开
+  // mode: 'history', // Enable this if the backend supports it
   scrollBehavior: () => ({y: 0}),
   routes: constantRouterMap
 })
-
